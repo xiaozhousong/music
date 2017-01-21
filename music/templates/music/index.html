@@ -3,7 +3,31 @@
 {% block body %}
 
 
-    
+<div class="row">
+{% for album in all_albums %}
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <a href = "{% url 'music:detail' album.id %}"><img src="{{ album.album_logo }}" alt="album_logo"></a>
+      
+      <div class="caption">
+        <h3>  
+          <h3><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></h3>    
+        </h3>
+        <h2>
+          {{ album.artist }}
+        </h2>
+        <p>
+        <a href = "{% url 'music:detail' album.id %}" class="btn btn-primary" role="button">Details</a> 
+        <a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;Favorite</a>
+        <a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+
     <ul>
         {% for album in all_albums %}
         <li><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
