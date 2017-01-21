@@ -1,20 +1,12 @@
-from django.shortcuts import render
-
-# Create your views here.
-
-#from django.http import HttpResponse
+from django.views import generic
 from .models import Album
-#from django.template import loader
-from django.shortcuts import render
-from django.http import Http404
 
-def index(request):
-	all_albums = Album.objects.all()
-	return render(request, 'music/index.html', {'all_albums' : all_albums})
+class IndexView(generic.ListView):
+	template_name = 'music/index.html'
 
-def detail(request, album_id):
-	try:
-		album = Album.objects.get(pk =  album_id)
-	except Album.DoesNotExist:
-		raise Http404("Album does not exist")
-	return render(request, 'music/detail.html', {'album' : album})
+	def get_queryset(self):
+		return Album.objects.all()
+
+class DetailView(generic.DetailView):
+	model = Album
+	template_name = 'music/detail.html'
