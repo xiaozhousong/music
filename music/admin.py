@@ -4,5 +4,12 @@ from django.contrib import admin
 
 from .models import Album, Song
 
-admin.site.register(Album)
+class AlbumModelAdmin(admin.ModelAdmin):
+	list_display = ["album_title", "artist"]
+	search_fields = ["album_title", "artist"]
+	class Meta:
+		model = Album
+
+
+admin.site.register(Album, AlbumModelAdmin)
 admin.site.register(Song)

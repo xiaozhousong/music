@@ -16,6 +16,9 @@ class Album(models.Model):
 	def __str__(self):
 		return self.album_title + ' - ' + self.artist
 
+	def __unicode__(self):
+		return self.album_title + ' - ' + self.artist
+
 class Song(models.Model):
 	album = models.ForeignKey(Album, on_delete=models.CASCADE)
 	file_type = models.CharField(max_length=10)
