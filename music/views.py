@@ -6,12 +6,14 @@ from .models import Album
 from django.shortcuts import render
  
 
+
 class IndexView(generic.ListView):
 	template_name = 'music/index.html'
 	context_object_name='all_albums'
 
 	def get_queryset(self):
 		return Album.objects.all()
+
 
 class DetailView(generic.DetailView):
 	model = Album
@@ -28,3 +30,5 @@ class AlbumUpdate(UpdateView):
 class AlbumDelete(DeleteView):
 	model = Album
 	success_url = reverse_lazy('music:index')
+
+
