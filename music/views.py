@@ -31,4 +31,10 @@ class AlbumDelete(DeleteView):
 	model = Album
 	success_url = reverse_lazy('music:index')
 
+def search_album(request):
+	if request.method == "POST":
+		search_text = request.POST['search_text']
+	else:
+		search_text =''
+	album = Album.objects.filter(title__contains=search_text)
 

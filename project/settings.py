@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'music.apps.MusicConfig',
+    'whoosh',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ DATABASES = {
     }
 }
 
-
+WHOOSH_INDEX = os.path.join(PROJECT_DIRECTORY,'whoosh/')
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 

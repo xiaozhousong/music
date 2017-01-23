@@ -1,5 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import url, patterns, include
 from . import views
+
 
 app_name = 'music'
 
@@ -19,5 +20,9 @@ urlpatterns = [
     #/music/album/music_id/delete
     url(r'album/(?P<pk>[0-9]+)/delete/$', views.AlbumDelete.as_view(), name='album_delete'),
 
-   
+    #/music/album/search
+    url(r'album/search/$', 'music.views.search_album', name='search'),
+
+
+    
 ]
