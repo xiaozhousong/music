@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'site/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'site/ajax.js' %}"></script>
     
     <title>{% block title %}Music{% endblock %}</title>
   </head>
@@ -54,13 +56,17 @@
           </li>
           
         </ul>
-
+        {% csrf_token %}
         <form class="navbar-form navbar-left" role="search" method="get" action="#">
           <div class="form-group">
-            <input type="text" class="form-control" name="require" value="">
+            <input type="text" class="form-control" name="saerch" value="">
           </div>
           <button type="submit" class="btn btn-default">Search</button>
         </form>
+
+        <ul id="search_results">
+          
+        </ul>
 
         <ul class="nav navbar-nav navbar-right">
 

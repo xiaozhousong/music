@@ -1,0 +1,21 @@
+{% extends 'music/master.html' %}
+
+{% block body %}
+
+
+
+{% if articles.count %}
+
+{% for album in album_search %}
+  <li><a href = "/album_search/get/{{ album.id }}/">{{ album.album_title }} </a></li>
+
+{% endfor %}
+
+{% else %}
+
+<li>None to show</li>
+
+{% endif %}
+
+
+{% endblock %}
